@@ -14,8 +14,6 @@ import static org.springframework.format.annotation.DateTimeFormat.ISO.DATE_TIME
 
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener.class)
-@Getter
-@Setter
 public abstract class AbstractAuditing {
 
     @Id

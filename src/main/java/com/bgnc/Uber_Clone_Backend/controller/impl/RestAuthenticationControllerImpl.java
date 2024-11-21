@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import static com.bgnc.Uber_Clone_Backend.utils.ApiTag.AUTHENTICATE;
@@ -19,6 +20,7 @@ import static com.bgnc.Uber_Clone_Backend.utils.ApiTag.REGISTER;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/")
 public class RestAuthenticationControllerImpl extends RestBaseController implements IRestAuthenticationController {
 
     private final IAuthenticationService authService;

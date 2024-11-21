@@ -26,10 +26,10 @@ import static com.bgnc.Uber_Clone_Backend.utils.ApiTag.*;
 public class SecurityConfig {
 
 
-     // PASSENGER-specific routes
-
     private final AuthenticationProvider authenticationProvider;
+
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
+
     private final AuthEntryPoint authEntryPoint;
 
     @Bean

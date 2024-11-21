@@ -8,18 +8,17 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
+
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "user")
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
+@Table(name = "users")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) // Use single table inheritance
+@DiscriminatorColumn(name = "user_type", discriminatorType = DiscriminatorType.STRING) // Column to differentiate between driver and passenger
 @Data
-public class User extends AbstractAuditing implements Serializable, UserDetails {
+public class User extends AbstractAuditing implements  UserDetails {
 
     private String username;
     private String password;
@@ -28,9 +27,11 @@ public class User extends AbstractAuditing implements Serializable, UserDetails 
     private String phone;
     private String email;
 
-    @Enumerated(EnumType.STRING)
     @ElementCollection(fetch = FetchType.EAGER)
+    @Enumerated(EnumType.STRING)
+    @CollectionTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"))
     private Set<Role> roles;
+
 
 
     @Override

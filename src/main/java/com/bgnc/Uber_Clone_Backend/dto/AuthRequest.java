@@ -17,4 +17,7 @@ public class AuthRequest extends DtoBase {
 
     @NotNull(message = "The password field is required")
     private String password;
+
+    @NotNull(message = "The role field is required")
+    private String role;
 }
